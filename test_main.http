@@ -1,0 +1,79 @@
+# Test task creation without file
+POST http://127.0.0.1:8000/tasks/
+Content-Type: application/json
+
+{
+    "title": "Sample Task",
+    "description": "This is a sample task description."
+}
+
+###
+
+# Test task creation with file
+POST http://127.0.0.1:8000/tasks_with_file/
+Content-Type: multipart/form-data
+
+{
+    "task": {
+        "title": "Task with File",
+        "description": "This task has a file attached."
+    },
+    "file": "<file_path_here>"
+}
+
+###
+
+# Test listing all tasks
+GET http://127.0.0.1:8000/tasks/
+Accept: application/json
+
+###
+
+# Test listing all tasks with files
+GET http://127.0.0.1:8000/tasks_with_file/
+Accept: application/json
+
+###
+
+# Test getting a specific task (replace <task_id> with actual task ID)
+GET http://127.0.0.1:8000/tasks/<task_id>
+Accept: application/json
+
+###
+
+# Test updating a specific task (replace <task_id> with actual task ID)
+PUT http://127.0.0.1:8000/tasks/<task_id>
+Content-Type: application/json
+
+{
+    "title": "Updated Title",
+    "description": "Updated description."
+}
+
+###
+
+# Test updating a specific task with file (replace <task_id> with actual task ID)
+PUT http://127.0.0.1:8000/tasks_with_file/<task_id>
+Content-Type: multipart/form-data
+
+{
+    "task_update": {
+        "title": "Updated Title with File",
+        "description": "Updated description with File."
+    },
+    "file": "<file_path_here>"
+}
+
+###
+
+# Test deleting a specific task (replace <task_id> with actual task ID)
+DELETE http://127.0.0.1:8000/tasks/<task_id>
+Accept: application/json
+
+###
+
+# Test deleting a specific task with file (replace <task_id> with actual task ID)
+DELETE http://127.0.0.1:8000/tasks_with_file/<task_id>
+Accept: application/json
+
+###
